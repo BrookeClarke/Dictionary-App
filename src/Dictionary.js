@@ -13,7 +13,6 @@ export default function Dictionary() {
 
     function search(event) {
         event.preventDefault();
-
         let apiKey = "0f605ca33b8d413fa995ab3t060267od";
         let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
         axios.get(apiUrl).then(handleResponse);
@@ -25,10 +24,16 @@ export default function Dictionary() {
 
     return (
         <div className="Dictionary">
-            <form onSubmit={search}>
-                <input type="search" onChange={handleKeywordChange} />
-            </form>
-            <Results results={results} />
-        </div>
-    )
+            <h1>What word do you want to look up?</h1>
+                <section>
+                    <form onSubmit={search}>
+                        <input type="search" onChange={handleKeywordChange} />
+                    </form>
+                    <div className="hint">
+                        Suggested words: sunset, wine, yoga, plant...
+                    </div>
+                </section>
+                <Results results={results} />
+            </div>
+        );
 }
